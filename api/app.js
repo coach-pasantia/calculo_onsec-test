@@ -7,7 +7,7 @@ const {dbConnection} = require('./db/dbConnection.js');
 class Server{
     constructor(){
         this.app = express();
-        this.port = process.env.PORT || 3000;
+        this.port = process.env.PORT || 8080;
         this.apiUser=`/api/v1/user`;
         this.apiProduct =`/api/v1/product`;
         this.apiEmpleados = `/api/v1/empleados`;
@@ -25,7 +25,7 @@ class Server{
         this.app.use(morgan("dev"))
         this.app.use(express.urlencoded({extended:false}))
         this.app.use(express.json())
-        this.app.use(express.static('./backend/public'))
+        this.app.use(express.static('./api/public'))
     }
     routes(){
         this.app.use(this.apiUser,router.user);
